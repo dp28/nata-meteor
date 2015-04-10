@@ -4,3 +4,10 @@ Template.task.events
 
   'click .delete': ->
     Meteor.call 'deleteTask', @_id
+
+  'click .toggle-private': ->
+    Meteor.call 'setPrivate', @_id, not @private
+
+Template.task.helpers
+  isOwner: ->
+    @owner is Meteor.userId()

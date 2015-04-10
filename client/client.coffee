@@ -1,3 +1,5 @@
+Meteor.subscribe 'tasks'
+
 Template.body.helpers
   tasks: ->
     if Session.get 'hideCompleted'
