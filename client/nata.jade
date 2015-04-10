@@ -1,6 +1,10 @@
 body
   .container
-    h1 Nata
+    header
+      h1 Nata
+
+      form.new-task
+        input(type='text' name='text' placeholder='Add new task ...')
 
     ul
       each tasks
