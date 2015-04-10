@@ -15,10 +15,17 @@ Template.body.helpers(
 Template.body.events(
   'submit .new-task': ({target}) ->
     text = target.text.value
-    share.Tasks.insert { text: text, createdAt: new Date() }
+    share.Tasks.insert {
+      text: text
+      createdAt: new Date()
+      owner: Meteor.userId()
+      username: Meteor.user().username
+    }
     target.text.value = ''
     false
 
   'change .hide-completed input': ({target}) ->
     Session.set 'hideCompleted', target.checked
 )
+
+Accounts.ui.config passwordSignupFields: 'USERNAME_ONLY'

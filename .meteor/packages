@@ -11,3 +11,5 @@ coffeescript
 mizzao:bootstrap-3
 mquandalle:jade
 stylus
+accounts-ui
+accounts-password

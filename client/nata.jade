@@ -7,8 +7,11 @@ body
         input(type='checkbox' checked='#{hideCompleted}')
         | Hide completed tasks
 
-      form.new-task
-        input(type='text' name='text' placeholder='Add new task ...')
+      +loginButtons
+
+      if currentUser
+        form.new-task
+          input(type='text' name='text' placeholder='Add new task ...')
 
     ul
       each tasks
