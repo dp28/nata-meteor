@@ -1,7 +1,11 @@
 body
   .container
     header
-      h1 Nata
+      h1 Nata (#{incompleteCount})
+
+      label.hide-completed
+        input(type='checkbox' checked='#{hideCompleted}')
+        | Hide completed tasks
 
       form.new-task
         input(type='text' name='text' placeholder='Add new task ...')
