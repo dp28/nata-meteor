@@ -1,4 +1,4 @@
-Template.body.helpers(
+Template.body.helpers
   tasks: ->
     if Session.get 'hideCompleted'
       share.Tasks.find {checked: $ne: true}, sort: createdAt: -1
@@ -10,22 +10,14 @@ Template.body.helpers(
 
   incompleteCount: ->
     share.Tasks.find(checked: $ne: true).count()
-)
 
-Template.body.events(
+Template.body.events
   'submit .new-task': ({target}) ->
-    text = target.text.value
-    share.Tasks.insert {
-      text: text
-      createdAt: new Date()
-      owner: Meteor.userId()
-      username: Meteor.user().username
-    }
+    Meteor.call 'addTask', target.text.value
     target.text.value = ''
     false
 
   'change .hide-completed input': ({target}) ->
     Session.set 'hideCompleted', target.checked
-)
 
 Accounts.ui.config passwordSignupFields: 'USERNAME_ONLY'

@@ -1,7 +1,6 @@
-Template.task.events(
+Template.task.events
   'click .toggle-checked': ->
-    share.Tasks.update @_id, $set: checked: not @checked
+    Meteor.call 'setChecked', @_id, not @checked
 
   'click .delete': ->
-    share.Tasks.remove @_id
-)
+    Meteor.call 'deleteTask', @_id
