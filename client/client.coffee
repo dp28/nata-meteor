@@ -23,3 +23,7 @@ Template.body.events
     Session.set 'hideCompleted', target.checked
 
 Accounts.ui.config passwordSignupFields: 'USERNAME_ONLY'
+
+Meteor.startup ->
+  $('[data-toggle=offcanvas]').click ->
+    $('.row-offcanvas').toggleClass 'active'

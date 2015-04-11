@@ -1,4 +1,4 @@
-li(class='{{#if checked}}checked{{/if}}')
+li.task(class='{{#if checked}}checked{{/if}}')
   button.delete &times;
   input.toggle-checked(type='checkbox' checked='#{checked}')
   if isOwner
