@@ -1,23 +1,20 @@
-head
-  title Nata
-body
-  .navbar.navbar-default.navbar-fixed-top(role='navigation')
-    .container
-      .navbar-header
-        button.navbar-toggle(
-          data-toggle='offcanvas'
-          data-target='.sidebar-nav')
-          span.icon-bar
-          span.icon-bar
-          span.icon-bar
-        a.navbar-brand(href="{{pathFor 'home'}}") Nata
-
+.navbar.navbar-default.navbar-fixed-top(role='navigation')
   .container
-    .row.row-offcanvas.row-offcanvas-left
-      #sidebar.col-xs-6.col-sm-3.sidebar-offcanvas(role='navigation')
-        ul.nav
-          li.active: a(href="{{pathFor 'home'}}") Home
-          li: a(href='#') Other
+    .navbar-header
+      button.navbar-toggle(
+        data-toggle='offcanvas'
+        data-target='.sidebar-nav')
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand(href="{{pathFor 'home'}}") Nata
 
-      .col-xs-12.col-sm-9
-        +yield
+.container
+  .row.row-offcanvas.row-offcanvas-left
+    #sidebar.col-xs-6.col-sm-3.sidebar-offcanvas(role='navigation')
+      ul.nav
+        li.active: a(href="{{pathFor 'home'}}") Home
+        li: a(href='#') Other
+
+    .col-xs-12.col-sm-9
+      +yield
