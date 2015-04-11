@@ -11,3 +11,4 @@ mquandalle:jade
 stylus
 accounts-ui
 accounts-password
+iron:router
