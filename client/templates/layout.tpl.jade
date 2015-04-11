@@ -12,12 +12,12 @@
       a.navbar-brand(href="{{pathFor 'home'}}") Nata
 
 
-.container
-  .row.row-offcanvas.row-offcanvas-left
+.container.full-height
+  .row.row-offcanvas.row-offcanvas-left.full-height
     #sidebar.col-xs-6.col-sm-3.sidebar-offcanvas(role='navigation')
       ul.nav
         li.active: a(href="{{pathFor 'home'}}") Home
-        li: a(href='#') Other
+        li: a(href='#') Another
 
     .col-xs-12.col-sm-9
       +yield
