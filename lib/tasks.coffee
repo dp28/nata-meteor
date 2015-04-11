@@ -10,6 +10,12 @@ Meteor.methods
       owner: Meteor.userId()
       username: Meteor.user().username
 
+
+  updateTask: (taskId, change) ->
+    task = Tasks.findOne taskId
+    authorizedIf currentUserOwns task if task.private
+    Tasks.update taskId, $set: change
+
   deleteTask: (taskId) ->
     task = Tasks.findOne taskId
     authorizedIf currentUserOwns task if task.private

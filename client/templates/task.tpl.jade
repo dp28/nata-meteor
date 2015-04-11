@@ -9,5 +9,12 @@ li.task(class='{{#if checked}}checked{{/if}}')
         | Public
 
   span.text
-    strong #{username}
-    | - #{text}
+    unless isOwner
+      strong #{username} -
+
+    form.edit-task
+      input(
+        type='text'
+        name='text'
+        value='#{text}'
+        placeholder='Type new content ...')
