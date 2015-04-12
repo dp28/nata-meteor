@@ -26,6 +26,8 @@ if expanded
   tr
     td
     td(colspan='2')
+      form.new-task
+        textarea.text-field(rows='1' name='text' placeholder='Add subtask...')
       table.tasks
         each children
           +task

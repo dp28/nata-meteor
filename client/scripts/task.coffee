@@ -1,22 +1,34 @@
 Template.task.events
   'click .toggle-checked': ->
+    event.stopImmediatePropagation()
     Meteor.call 'updateTask', @_id, checked: not @checked
 
   'click .delete': ->
+    event.stopImmediatePropagation()
     Meteor.call 'deleteTask', @_id
 
   'click .toggle-private': ->
+    event.stopImmediatePropagation()
     Meteor.call 'updateTask', @_id, private: not @private
 
-  'keyup .text-field': _.throttle ({target}) ->
+  'keyup .edit-task .text-field': _.throttle ({target}) ->
+    event.stopImmediatePropagation()
     wrapHeight target
     Meteor.call 'updateTask', @_id, text: target.value
   , 300
 
-  'click .expand': _.throttle ->
+  'click .expand': (event) ->
+    event.stopImmediatePropagation()
     key = "expanded#{@_id}"
     Session.set key, if Session.get key then false else true
-  , 300, trailing: false
+
+  'keydown .new-task': (event) ->
+    event.stopImmediatePropagation()
+    if event.which is 13
+      event.preventDefault()
+      Meteor.call 'addTask', @_id, event.target.value
+      event.target.value = ''
+      wrapHeight event.target
 
 Template.task.helpers
   isOwner: ->
