@@ -18,6 +18,7 @@ Template.task.helpers
     @owner is Meteor.userId()
 
 wrapHeight = (element) ->
+  element.style.height = 'auto'
   element.style.height = "#{element.scrollHeight}px"
 
 share.wrapTextareaHeight = wrapHeight
