@@ -11,7 +11,14 @@ Router.map ->
       Meteor.subscribe 'children', @params._id
       @next()
 
-  @route 'home', path: '/'
+  @route 'profile', path: 'profile'
+  @route 'public', path: 'public'
+
+  @route 'home',
+    path: '/'
+    action: ->
+      Router.go if Meteor.userId() then 'profile' else 'public'
+
   @route 'notFound', path: '*'
 
 

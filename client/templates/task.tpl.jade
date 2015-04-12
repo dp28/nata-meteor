@@ -2,9 +2,9 @@ tr.task(class='{{#if checked}}checked{{/if}}')
   td.prefix
     button.expand
       if expanded
-        &minus;
+        | &minus;
       else
-        &plus;
+        | &plus;
     input.toggle-checked(type='checkbox' checked='#{checked}')
 
   td.content

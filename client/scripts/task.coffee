@@ -36,11 +36,15 @@ Template.task.helpers
   expanded: ->
     Session.get "expanded#{@_id}"
 
+Template.task.onRendered ->
+  wrapHeight $(@firstNode).find('.text-field')[0]
+
 wrapHeight = (element) ->
   element.style.height = 'auto'
   element.style.height = "#{element.scrollHeight}px"
 
 share.wrapTextareaHeight = wrapHeight
 
-Template.task.onRendered ->
-  wrapHeight $(@firstNode).find('.text-field')[0]
+share.taskSearch = (search) ->
+  search.checked = $ne: true if Session.get 'hideCompleted'
+  share.Tasks.find search, sort: createdAt: -1
