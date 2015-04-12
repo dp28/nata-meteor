@@ -19,9 +19,6 @@ Template.listsShow.events
     submit target, @_id
     false
 
-  'change .hide-completed input': ({target}) ->
-    Session.set 'hideCompleted', target.checked
-
   'keyup .new-task': ({target}) ->
     share.wrapTextareaHeight target
 

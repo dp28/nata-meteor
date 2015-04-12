@@ -15,9 +15,16 @@
 .container-fluid.full-height
   .row.row-offcanvas.row-offcanvas-left.full-height
     #sidebar.col-xs-6.col-sm-3.sidebar-offcanvas(role='navigation')
-      ul.nav
+      ul.nav.sidebar-nav
         li.active: a(href="{{pathFor 'home'}}") Home
         li: a(href='#') Another
+
+      .settings
+        .heading Settings
+
+        label.hide-completed
+          input(type='checkbox' checked='#{hideCompleted}')
+          | Hide completed tasks
 
     .col-xs-12.col-sm-9.full-height
       +notifications

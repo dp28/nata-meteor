@@ -1,10 +1,6 @@
 .list
   h1 #{text} (#{incompleteCount})
 
-  label.hide-completed
-    input(type='checkbox' checked='#{hideCompleted}')
-    | Hide completed tasks
-
   if isOwner
     button.toggle-private
       if private
