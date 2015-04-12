@@ -1,0 +1,13 @@
+h1 #{text} (#{incompleteCount})
+
+label.hide-completed
+  input(type='checkbox' checked='#{hideCompleted}')
+  | Hide completed tasks
+
+if currentUser
+  form.new-task
+    textarea.text-field(rows='1' name='text' placeholder='Type to add ...')
+
+table.tasks
+  each tasks
+    +task

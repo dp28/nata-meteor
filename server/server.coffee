@@ -1,5 +1,3 @@
-Meteor.startup ->
-
 Meteor.publish 'tasks', ->
   share.Tasks.find
     $or: [

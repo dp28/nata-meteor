@@ -1,13 +1,6 @@
-h1 List name (#{incompleteCount})
-
-label.hide-completed
-  input(type='checkbox' checked='#{hideCompleted}')
-  | Hide completed tasks
+h1 Welcome to Nata
 
 if currentUser
-  form.new-task
-    textarea.text-field(rows='1' name='text' placeholder='Type to add ...')
-
-table.tasks
-  each tasks
-    +task
+  p Open one of your lists:
+    with ownedList
+      a(href="{{pathFor 'listsShow'}}") #{text}

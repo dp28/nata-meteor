@@ -2,10 +2,11 @@ Tasks = new Mongo.Collection 'tasks'
 share.Tasks = Tasks
 
 Meteor.methods
-  addTask: (text) ->
+  addTask: (parentId, text) ->
     authorizedIf Meteor.userId()
     Tasks.insert
       text: text
+      parentId: parentId
       createdAt: new Date()
       owner: Meteor.userId()
       username: Meteor.user().username
