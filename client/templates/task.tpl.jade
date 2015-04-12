@@ -5,7 +5,11 @@ tr.task(class='{{#if checked}}checked{{/if}}')
         | &minus;
       else
         | &plus;
-    input.toggle-checked(type='checkbox' checked='#{checked}')
+    if checked
+      button.toggle-checked.ticked
+        .tick
+    else
+      button.toggle-checked.unticked
 
   td.content
     span.text

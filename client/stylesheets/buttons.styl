@@ -4,9 +4,32 @@ button
   background: white
   outline: none
   color: #777
-  padding: 1px 6px
+  padding: 1px 5px
   border-radius: 25px
+  width: 22px
+  height: 22px
+  background: #ddd
 
   &:hover
     text-decoration: initial
     background: #eee
+
+.unticked
+  display: inline-block
+  content: ' '
+
+.ticked
+  background: green
+
+  &:hover
+    background: lightgreen
+
+.tick
+  width: 12px
+  height: 5px
+  border-bottom: 2px solid white
+  border-left: 2px solid white
+  transform: translateY(-2px) rotate(-45deg)
+
+a.button
+  padding: 4px 5px
