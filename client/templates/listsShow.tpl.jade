@@ -1,5 +1,11 @@
-.list
-  h3 #{text}
+.list.page
+  form.edit-list
+    textarea.text-field.list-text(
+      rows='1'
+      autocomplete='off'
+      readonly='{{#unless currentUser}}readonly{{/unless}}'
+      placeholder='Type new content ...')
+      | #{text}
 
   .info
     if isOwner

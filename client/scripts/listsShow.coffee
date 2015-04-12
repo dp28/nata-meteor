@@ -32,6 +32,12 @@ Template.listsShow.events
       submit event.target, @_id
       share.wrapTextareaHeight event.target
 
+  'keyup .edit-list .text-field': _.throttle (event) ->
+    event.stopImmediatePropagation()
+    share.wrapTextareaHeight event.target
+    Meteor.call 'updateTask', @_id, text: event.target.value
+  , 300
+
 submit = (textarea, id) ->
   Meteor.call 'addTask', id, textarea.value
   textarea.value = ''
