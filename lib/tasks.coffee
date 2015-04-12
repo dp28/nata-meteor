@@ -9,11 +9,13 @@ Meteor.methods
       parentId: parentId
       private: true
       createdAt: new Date()
+      updatedAt: new Date()
       owner: Meteor.userId()
       username: Meteor.user().username
 
   updateTask: (taskId, change) ->
     authorizedIf currentUserCanEdit taskId
+    change.updatedAt = new Date()
     Tasks.update taskId, $set: change
 
   deleteTask: (taskId) ->

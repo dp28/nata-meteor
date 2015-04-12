@@ -1,12 +1,16 @@
 .list
-  h1 #{text} (#{incompleteCount})
+  h3 #{text}
 
-  if isOwner
-    button.toggle-private
-      if private
-        span.glyphicon.glyphicon-lock
-      else
-        span.glyphicon.glyphicon-share
+  .info
+    if isOwner
+      button.toggle-private
+        if private
+          span.glyphicon.glyphicon-lock
+        else
+          span.glyphicon.glyphicon-share
+
+    span.owner #{username}
+    span.date last updated{{formatDate updatedAt}}
 
   if currentUser
     form.new-task
