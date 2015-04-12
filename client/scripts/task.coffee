@@ -13,15 +13,14 @@ Template.task.events
     Meteor.call 'updateTask', @_id, text: target.value
   , 300
 
-  'ready .text-field': ({target}) ->
-    console.log target
-
 Template.task.helpers
   isOwner: ->
     @owner is Meteor.userId()
 
 wrapHeight = (element) ->
   element.style.height = "#{element.scrollHeight}px"
+
+share.wrapTextareaHeight = wrapHeight
 
 Template.task.onRendered ->
   wrapHeight $(@firstNode).find('.text-field')[0]

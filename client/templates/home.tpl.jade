@@ -6,7 +6,7 @@ label.hide-completed
 
 if currentUser
   form.new-task
-    input(type='text' name='text' placeholder='Type to add ...')
+    textarea.text-field(rows='1' name='text' placeholder='Type to add ...')
 
 table.tasks
   each tasks

@@ -13,9 +13,21 @@ Template.home.helpers
 
 Template.home.events
   'submit .new-task': ({target}) ->
-    Meteor.call 'addTask', target.text.value
-    target.text.value = ''
+    submit target
     false
 
   'change .hide-completed input': ({target}) ->
     Session.set 'hideCompleted', target.checked
+
+  'keyup .new-task': ({target}) ->
+    share.wrapTextareaHeight target
+
+  'keydown .new-task': (event) ->
+    if event.which is 13
+      event.preventDefault()
+      submit event.target
+      share.wrapTextareaHeight event.target
+
+submit = (textarea) ->
+  Meteor.call 'addTask', textarea.value
+  textarea.value = ''
