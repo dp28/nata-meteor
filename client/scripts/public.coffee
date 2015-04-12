@@ -1,3 +1,3 @@
 Template.public.helpers
   publicLists: ->
-    share.taskSearch private: $ne: true
+    share.taskSearch parentId: null, private: $ne: true
