@@ -1,5 +1,6 @@
 tr.task(class='{{#if checked}}checked{{/if}}')
   td.prefix
+    a.button.expand(href='{{pathFor "listsShow"}}') &plus;
     input.toggle-checked(type='checkbox' checked='#{checked}')
 
   td.content

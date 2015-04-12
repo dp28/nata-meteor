@@ -1,6 +1,4 @@
 h1 Welcome to Nata
 
-if currentUser
-  p Open one of your lists:
-    with ownedList
-      a(href="{{pathFor 'listsShow'}}") #{text}
+each rootLists
+  +task
