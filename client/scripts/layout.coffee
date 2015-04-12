@@ -4,3 +4,6 @@ Template.layout.events
 
   'change .hide-completed input': ({target}) ->
     Session.set 'hideCompleted', target.checked
+
+  'click #login-buttons-logout': ->
+    Router.go 'public'
