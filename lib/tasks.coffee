@@ -7,6 +7,7 @@ Meteor.methods
     Tasks.insert
       text: text
       parentId: parentId
+      private: true
       createdAt: new Date()
       owner: Meteor.userId()
       username: Meteor.user().username
