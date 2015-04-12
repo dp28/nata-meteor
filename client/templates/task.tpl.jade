@@ -1,6 +1,6 @@
 tr.task(class='{{#if checked}}checked{{/if}}')
   td.prefix
-    a.button.expand(href='{{pathFor "listsShow"}}') &plus;
+    button.expand &plus;
     input.toggle-checked(type='checkbox' checked='#{checked}')
 
   td.content
@@ -21,3 +21,11 @@ tr.task(class='{{#if checked}}checked{{/if}}')
           span.glyphicon.glyphicon-lock
         else
           span.glyphicon.glyphicon-share
+
+if expanded
+  tr
+    td
+    td(colspan='2')
+      table.tasks
+        each children
+          +task
