@@ -13,6 +13,7 @@ tr.task(class='{{#if checked}}checked{{/if}}')
         textarea.text-field(
           rows='1'
           autocomplete='off'
+          readonly='{{#unless currentUser}}readonly{{/unless}}'
           placeholder='Type new content ...')
           | #{text}
 

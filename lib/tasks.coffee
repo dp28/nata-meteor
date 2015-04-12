@@ -24,4 +24,4 @@ authorizedIf = (authorized) ->
 
 currentUserCanEdit = (taskId) ->
   task = Tasks.findOne taskId
-  if task.private then task.owner is Meteor.userId() else true
+  if task.private then task.owner is Meteor.userId() else Meteor.userId()?
