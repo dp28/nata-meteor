@@ -1,13 +1,21 @@
-h1 #{text} (#{incompleteCount})
+.list
+  h1 #{text} (#{incompleteCount})
 
-label.hide-completed
-  input(type='checkbox' checked='#{hideCompleted}')
-  | Hide completed tasks
+  label.hide-completed
+    input(type='checkbox' checked='#{hideCompleted}')
+    | Hide completed tasks
 
-if currentUser
-  form.new-task
-    textarea.text-field(rows='1' name='text' placeholder='Type to add ...')
+  if isOwner
+    button.toggle-private
+      if private
+        span.glyphicon.glyphicon-lock
+      else
+        span.glyphicon.glyphicon-share
 
-table.tasks
-  each tasks
-    +task
+  if currentUser
+    form.new-task
+      textarea.text-field(rows='1' name='text' placeholder='Type to add ...')
+
+  table.tasks
+    each tasks
+      +task

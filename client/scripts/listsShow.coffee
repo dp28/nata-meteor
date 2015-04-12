@@ -1,4 +1,7 @@
 Template.listsShow.helpers
+  isOwner: ->
+    @owner is Meteor.userId()
+
   tasks: ->
     if Session.get 'hideCompleted'
       share.Tasks.find {parentId: @_id, checked: $ne: true}, sort: createdAt: -1
@@ -21,6 +24,10 @@ Template.listsShow.events
 
   'keyup .new-task': ({target}) ->
     share.wrapTextareaHeight target
+
+  'click .toggle-private': (event) ->
+    event.stopImmediatePropagation()
+    Meteor.call 'updateTask', @_id, private: not @private
 
   'keydown .new-task': (event) ->
     if event.which is 13

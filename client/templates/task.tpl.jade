@@ -18,13 +18,8 @@ tr.task(class='{{#if checked}}checked{{/if}}')
 
   td.suffix
     button.delete &times;
-
-    if isOwner
-      button.toggle-private
-        if private
-          span.glyphicon.glyphicon-lock
-        else
-          span.glyphicon.glyphicon-share
+    a.button(href="{{pathFor 'listsShow'}}")
+      span.glyphicon.glyphicon-link
 
 if expanded
   tr
