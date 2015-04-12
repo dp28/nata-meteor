@@ -8,15 +8,20 @@ Template.task.events
   'click .toggle-private': ->
     Meteor.call 'updateTask', @_id, private: not @private
 
-  'keydown input[type=text]': (event)->
-    if event.which is 13
-      event.preventDefault()
-      event.target.blur()
-
-  'keyup input[type=text]': _.throttle ({target}) ->
+  'keyup .text-field': _.throttle ({target}) ->
+    wrapHeight target
     Meteor.call 'updateTask', @_id, text: target.value
   , 300
+
+  'ready .text-field': ({target}) ->
+    console.log target
 
 Template.task.helpers
   isOwner: ->
     @owner is Meteor.userId()
+
+wrapHeight = (element) ->
+  element.style.height = "#{element.scrollHeight}px"
+
+Template.task.onRendered ->
+  wrapHeight $(@firstNode).find('.text-field')[0]

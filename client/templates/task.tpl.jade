@@ -1,21 +1,22 @@
-li.task(class='{{#if checked}}checked{{/if}}')
-  button.delete &times;
-  input.toggle-checked(type='checkbox' checked='#{checked}')
-  if isOwner
-    button.toggle-private
-      if private
-        | Private
-      else
-        | Public
+tr.task(class='{{#if checked}}checked{{/if}}')
+  td.prefix
+    input.toggle-checked(type='checkbox' checked='#{checked}')
 
-  span.text
-    unless isOwner
-      strong #{username} -
+  td.content
+    span.text
+      form.edit-task
+        textarea.text-field(
+          rows='1'
+          autocomplete='off'
+          placeholder='Type new content ...')
+          | #{text}
 
-    form.edit-task
-      input(
-        type='text'
-        name='text'
-        value='#{text}'
-        autocomplete='off'
-        placeholder='Type new content ...')
+  td.suffix
+    button.delete &times;
+
+    if isOwner
+      button.toggle-private
+        if private
+          span.glyphicon.glyphicon-lock
+        else
+          span.glyphicon.glyphicon-share

@@ -1,20 +1,41 @@
 .tasks
-  list-style: none
-  padding-left: 0
+  width: 100%
 
 .task
-  .edit-task
-    display: inline
+  .prefix
+    vertical-align: top
 
-    input[type=text]
-      border: none
+  .content
+    width: 100%
+
+    .edit-task
       display: inline
-      outline: none
 
-  .delete
-    float: right
-    border: none
-    background: white
+      .text-field
+        width: 100%
+        border: none
+        display: inline
+        outline: none
+        resize: none
+        overflow: hidden
+
+  .suffix
+    min-width: 55px
+    vertical-align: top
+
+    .delete
+    .toggle-private
+      float: right
+      border: none
+      background: white
+      outline: none
+      color: #777
+
+  &.checked
+    .text-field
+      color: #999
+      text-decoration: line-through
+      font-style: italic
 
 .new-task
   input[type=text]
