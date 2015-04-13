@@ -4,9 +4,13 @@ share.Tasks = Tasks
 Meteor.methods
   addTask: (parentId, text) ->
     authorizedIf Meteor.userId()
+    ancestors = Tasks.findOne(_id: parentId).ancestors
+    ancestors ?= []
+    ancestors.push parentId if parentId
     Tasks.insert
       text: text
       parentId: parentId
+      ancestors: ancestors
       private: true
       createdAt: new Date()
       updatedAt: new Date()
