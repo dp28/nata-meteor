@@ -8,6 +8,9 @@
       | #{text}
 
   .info
+    if canDelete
+      button.delete &times;
+
     if isOwner
       button.toggle-private
         if private

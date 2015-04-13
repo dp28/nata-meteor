@@ -14,10 +14,19 @@ Template.listsShow.helpers
   incompleteCount: ->
     share.Tasks.find(parentId: @_id, checked: $ne: true).count()
 
+  canDelete: ->
+    Meteor.userId()? and (not @private or Meteor.userId() is @owner)
+
 Template.listsShow.events
   'submit .new-task': ({target}) ->
     submit target, @_id
     false
+
+  'click .delete': (event) ->
+    event.stopImmediatePropagation()
+    parentId = @parentId
+    deleteAll @_id
+    Router.go 'listsShow', _id: parentId
 
   'keyup .new-task': ({target}) ->
     share.wrapTextareaHeight target
@@ -41,3 +50,8 @@ Template.listsShow.events
 submit = (textarea, id) ->
   Meteor.call 'addTask', id, textarea.value
   textarea.value = ''
+
+deleteAll = (id) ->
+  for task in share.Tasks.find(parentId: id).fetch()
+    deleteAll task._id if Meteor.userId() is task.owner or not task.private
+  Meteor.call 'deleteTask', id

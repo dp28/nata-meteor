@@ -3,10 +3,6 @@ Template.task.events
     event.stopImmediatePropagation()
     Meteor.call 'updateTask', @_id, checked: not @checked
 
-  'click .delete': (event) ->
-    event.stopImmediatePropagation()
-    Meteor.call 'deleteTask', @_id
-
   'keyup .edit-task .text-field': _.throttle (event) ->
     event.stopImmediatePropagation()
     wrapHeight event.target
