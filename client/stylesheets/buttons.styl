@@ -1,5 +1,5 @@
 .button
-button
+button:not(.navbar-toggle)
   border: none
   background: white
   outline: none
@@ -15,15 +15,15 @@ button
     text-decoration: initial
     background: #eee
 
-.unticked
-  display: inline-block
-  content: ' '
+  &.unticked
+    display: inline-block
+    content: ' '
 
-.ticked
-  background: green
+  &.ticked
+    background: green
 
-  &:hover
-    background: lightgreen
+    &:hover
+      background: lightgreen
 
 .tick
   width: 12px
