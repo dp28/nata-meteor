@@ -11,9 +11,6 @@ Template.listsShow.helpers
   hideCompleted: ->
     Session.get 'hideCompleted'
 
-  incompleteCount: ->
-    share.Tasks.find(parentId: @_id, checked: $ne: true).count()
-
   canDelete: ->
     Meteor.userId()? and (not @private or Meteor.userId() is @owner)
 

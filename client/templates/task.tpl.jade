@@ -3,6 +3,8 @@ tr.task(class='{{#if checked}}checked{{/if}}')
     button.expand
       if expanded
         | &minus;
+      else if hasChildren
+        span.small #{childCount}
       else
         | &plus;
     if checked

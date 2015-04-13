@@ -24,23 +24,30 @@ Template.task.events
 
 Template.task.helpers
   children: ->
-    if Session.get 'hideCompleted'
-      share.Tasks.find {parentId: @_id, checked: $ne: true}, sort: createdAt: -1
-    else
-      share.Tasks.find {parentId: @_id}, sort: createdAt: -1
+    taskSearch parentId: @_id
 
   expanded: ->
     Session.get "expanded#{@_id}"
 
+  childCount: ->
+    childCount @_id
+
+  hasChildren: ->
+    childCount(@_id) > 0
+
 Template.task.onRendered ->
   wrapHeight $(@firstNode).find('.text-field')[0]
+
+childCount = (id) ->
+  share.Tasks.find(parentId: id).count()
 
 wrapHeight = (element) ->
   element.style.height = 'auto'
   element.style.height = "#{element.scrollHeight}px"
 
-share.wrapTextareaHeight = wrapHeight
-
-share.taskSearch = (search) ->
+taskSearch = (search) ->
   search.checked = $ne: true if Session.get 'hideCompleted'
   share.Tasks.find search, sort: createdAt: -1
+
+share.wrapTextareaHeight = wrapHeight
+share.taskSearch = taskSearch
