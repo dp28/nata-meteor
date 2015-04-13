@@ -1,4 +1,7 @@
-h2 My Lists
+.list.page
+  h2 My Lists
+  form.new-task
+    textarea.text-field(rows='1' name='text' placeholder='Type to add ...')
 
-each rootLists
-  +task
+  each rootLists
+    +task
