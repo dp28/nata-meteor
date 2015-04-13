@@ -13,6 +13,6 @@ addTouchwipe = ->
 
     preventDefaultEvents: false
 
+
 Meteor.startup ->
   addTouchwipe()
-
