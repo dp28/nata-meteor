@@ -9,10 +9,27 @@ Router.map ->
     data: -> share.Tasks.findOne @params._id
     onBeforeAction: ->
       Meteor.subscribe 'children', @params._id
+      depth = share.Tasks.findOne(@params._id)?.ancestors.length + 1 or 0
+      Session.set 'currentDepth', depth
       @next()
 
-  @route 'profile', path: 'profile'
-  @route 'public', path: 'public'
+    action: ->
+      Session.set 'expanded', {} unless @params.query.keepExpanded
+      @render()
+
+  @route 'profile',
+    path: 'profile'
+    onBeforeAction: ->
+      Session.set 'expanded', {}
+      Session.set 'currentDepth', 0
+      @next()
+
+  @route 'public',
+    path: 'public'
+    onBeforeAction: ->
+      Session.set 'expanded', {}
+      Session.set 'currentDepth', 0
+      @next()
 
   @route 'home',
     path: '/'

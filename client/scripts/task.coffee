@@ -11,8 +11,7 @@ Template.task.events
 
   'click .expand': (event) ->
     event.stopImmediatePropagation()
-    key = "expanded#{@_id}"
-    Session.set key, if Session.get key then false else true
+    handleExpand @ if toggleExpand @_id
 
   'keydown .new-task': (event) ->
     event.stopImmediatePropagation()
@@ -27,7 +26,7 @@ Template.task.helpers
     taskSearch parentId: @_id
 
   expanded: ->
-    Session.get "expanded#{@_id}"
+    Session.get('expanded')?[@_id]
 
   childCount: ->
     childCount @_id
@@ -48,6 +47,25 @@ wrapHeight = (element) ->
 taskSearch = (search) ->
   search.checked = $ne: true if Session.get 'hideCompleted'
   share.Tasks.find search, sort: createdAt: -1
+
+toggleExpand = (id) ->
+  expandedIds = Session.get('expanded') or {}
+  expandedIds[id] = if expandedIds[id] then false else true
+  Session.set 'expanded', expandedIds
+  expandedIds[id]
+
+handleExpand = (task) ->
+  expandFurthest task.ancestors if fullyExpanded task.ancestors.length
+
+expandFurthest = (taskIds) ->
+  level = taskIds.length - (Session.get('maxExpansion') - 1)
+  console.log taskIds[level]
+  Router.go 'listsShow', {_id: taskIds[level]}, query: keepExpanded: true
+
+fullyExpanded = (taskDepth) ->
+  depthDifference = taskDepth - Session.get 'currentDepth'
+  console.log depthDifference + 1, Session.get('maxExpansion'), depthDifference + 1 >= Session.get 'maxExpansion'
+  depthDifference + 1 >= Session.get 'maxExpansion'
 
 share.wrapTextareaHeight = wrapHeight
 share.taskSearch = taskSearch
