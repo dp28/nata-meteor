@@ -2,7 +2,7 @@ Meteor.subscribe 'tasks'
 
 Accounts.ui.config passwordSignupFields: 'USERNAME_ONLY'
 
-Meteor.startup ->
+addTouchwipe = ->
   $(document.body).touchwipe
     wipeLeft: ->
       $('.row-offcanvas').removeClass 'active'
@@ -12,3 +12,7 @@ Meteor.startup ->
         $('.row-offcanvas').addClass 'active'
 
     preventDefaultEvents: false
+
+Meteor.startup ->
+  addTouchwipe()
+
