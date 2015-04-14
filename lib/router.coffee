@@ -9,13 +9,18 @@ Router.map ->
     data: -> share.Tasks.findOne @params._id
     onBeforeAction: ->
       Meteor.subscribe 'children', @params._id
-      depth = share.Tasks.findOne(@params._id)?.ancestors.length + 1 or 0
-      Session.set 'currentDepth', depth
       @next()
 
     action: ->
-      Session.set 'expanded', {} unless @params.query.keepExpanded
-      @render()
+      if @ready()
+        Deps.autorun -> Deps.nonreactive ->
+          if Session.get 'keepExpanded'
+            Session.set 'keepExpanded', false
+          else
+            Session.set 'expanded', {}
+        depth = @data()?.ancestors.length + 1 or 0
+        Session.set 'currentDepth', depth
+        @render()
 
   @route 'profile',
     path: 'profile'

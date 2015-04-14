@@ -59,12 +59,11 @@ handleExpand = (task) ->
 
 expandFurthest = (taskIds) ->
   level = taskIds.length - (Session.get('maxExpansion') - 1)
-  console.log taskIds[level]
-  Router.go 'listsShow', {_id: taskIds[level]}, query: keepExpanded: true
+  Session.set 'keepExpanded', true
+  Router.go 'listsShow', _id: taskIds[level]
 
 fullyExpanded = (taskDepth) ->
   depthDifference = taskDepth - Session.get 'currentDepth'
-  console.log depthDifference + 1, Session.get('maxExpansion'), depthDifference + 1 >= Session.get 'maxExpansion'
   depthDifference + 1 >= Session.get 'maxExpansion'
 
 share.wrapTextareaHeight = wrapHeight
