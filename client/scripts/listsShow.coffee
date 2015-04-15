@@ -8,9 +8,6 @@ Template.listsShow.helpers
     else
       share.Tasks.find {parentId: @_id}, sort: createdAt: -1
 
-  hideCompleted: ->
-    Session.get 'hideCompleted'
-
   canDelete: ->
     Meteor.userId()? and (not @private or Meteor.userId() is @owner)
 
