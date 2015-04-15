@@ -1,26 +1,38 @@
 @import 'colours.import'
+@import 'sizes.import'
+
+.navbar-shadow
+  width: 100%
+  height: sizes.navbar-height
+  z-index: 500
+  top: 0px
+  position: fixed
+  box-shadow: 0px 0px 5px colours.shadow
 
 .navbar
-  background-color: primary.base
-  color: text
+  background-color: colours.primary.base
+  color: colours.text
+  border: none
+  max-height: sizes.navbar-height
+  box-shadow: 0px 0px 2px colours.shadow
 
   .navbar-header
     width: 100%
 
   .navbar-brand
-    color: text
+    color: colours.text
 
   .navbar-toggle
     float: left
     margin-left: 10px
     border: none
-    background-color: primary.base
+    background-color: colours.primary.base
 
     .icon-bar
-      background-color: text
+      background-color: colours.text
 
     &:hover
-      background-color: primary.base
+      background-color: colours.primary.base
 
   .login-nav
     position: relative
@@ -40,7 +52,7 @@
 
       a
         text-decoration: none
-        color: text
+        color: colours.text
 
         &:hover
           color: #5e5e5e

@@ -1,5 +1,11 @@
 @import 'colours.import'
 
+a
+  color: colours.primary.dark
+
+  &:hover
+    color: colours.primary.base
+
 .button
 button:not(.navbar-toggle)
   border: none
@@ -22,10 +28,10 @@ button:not(.navbar-toggle)
     content: ' '
 
   &.ticked
-    background: primary.base
+    background: colours.primary.base
 
     &:hover
-      background: primary.light
+      background: colours.primary.light
 
 .tick
   width: 12px
