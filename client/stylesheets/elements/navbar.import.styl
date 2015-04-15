@@ -1,3 +1,33 @@
+#navbar
+  #sidebar-toggle
+    background-color: blue
+    width: sizes.navbar-height
+    height: sizes.navbar-height
+    border: none
+    outline: none
+    padding: 0
+
+    .bar
+      transition: s('transform %s' % sidebar-transition-time)
+      width: 50%
+      height: 2px
+      border-radius: 1px
+      background-color: white
+      margin: 6px auto
+
+    .sidebar-open & .bar
+      &.top
+        transform: translateY(8px)rotate(225deg)
+
+      &.middle
+        transform: scale(0)
+
+      &.bottom
+        transform: translateY(-8px)rotate(135deg)
+
+    +above(mobile)
+      display: none
+
 .navbar-shadow
   width: 100%
   height: sizes.navbar-height

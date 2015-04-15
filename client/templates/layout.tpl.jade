@@ -1,37 +1,7 @@
-.navbar.navbar-default.navbar-fixed-top(role='navigation')
-  .container-fluid
-    .navbar-header
-      button.navbar-toggle(
-        data-toggle='offcanvas'
-        data-target='.sidebar-nav')
-        span.icon-bar
-        span.icon-bar
-        span.icon-bar
-      span.login-nav
-        +loginButtons
-      a.navbar-brand(href="{{pathFor 'home'}}") Nata
-.navbar-shadow
-
-.container-fluid.full-height
-  .row.row-offcanvas.row-offcanvas-left.full-height
-    #sidebar.col-xs-6.col-sm-3.sidebar-offcanvas(role='navigation')
-      .heading Lists
-
-      ul.nav.sidebar-nav
-        li: a(href="{{pathFor 'profile'}}") My lists
-        li: a(href="{{pathFor 'public'}}") Public lists
-
-      .settings
-        .heading Settings
-
-        if hideCompleted
-          button.ticked.hide-completed
-            .tick
-        else
-          button.unticked.hide-completed
-
-        span Hide completed tasks
-
-    .col-xs-12.col-sm-9.full-height
++navbar
+#main-container
+  +sidebar
+  #page-container
+    #page
       +notifications
       +yield

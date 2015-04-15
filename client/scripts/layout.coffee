@@ -1,6 +1,6 @@
 Template.layout.events
-  'click .navbar-toggle': ({target}) ->
-    $('.row-offcanvas').toggleClass 'active'
+  'click #sidebar-toggle': ({target}) ->
+    $('body').toggleClass 'sidebar-open'
 
   'click .hide-completed': ->
     Session.set 'hideCompleted', not Session.get 'hideCompleted'

@@ -1,0 +1,17 @@
+#sidebar
+  .heading Lists
+
+  ul.nav.sidebar-nav
+    li: a(href="{{pathFor 'profile'}}") My lists
+    li: a(href="{{pathFor 'public'}}") Public lists
+
+  .settings
+    .heading Settings
+
+    if hideCompleted
+      button.ticked.hide-completed
+        .tick
+    else
+      button.unticked.hide-completed
+
+    span Hide completed tasks

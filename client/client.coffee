@@ -5,14 +5,13 @@ Accounts.ui.config passwordSignupFields: 'USERNAME_ONLY'
 addTouchwipe = ->
   $(document.body).touchwipe
     wipeLeft: ->
-      $('.row-offcanvas').removeClass 'active'
+      $('body').removeClass 'sidebar-open'
 
     wipeRight: ->
-      unless $('.row-offcanvas').hasClass 'active'
-        $('.row-offcanvas').addClass 'active'
+      unless $('body').hasClass 'sidebar-open'
+        $('body').addClass 'sidebar-open'
 
     preventDefaultEvents: false
-
 
 Meteor.startup ->
   addTouchwipe()

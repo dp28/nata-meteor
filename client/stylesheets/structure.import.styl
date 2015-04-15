@@ -1,0 +1,65 @@
+html
+body
+#page-container
+#page
+  height: 100%
+
+body
+  font-family: sans-serif
+
+#main-container
+#navbar
+  width: 100%
+
+#navbar
+  height: sizes.navbar-height
+  position: fixed
+
+#main-container
+  position: absolute
+  top: 50px
+  height: s('calc(100% - %s)' % sizes.navbar-height)
+  overflow: hidden
+
+  #sidebar
+    span(1/4)
+
+  #page-container
+    span(3/4)
+    padding: 0 10px
+    overflow: auto
+
+  +below(mobile)
+    #sidebar
+    #page-container
+      position: absolute
+      transition: s('all %s' % sidebar-transition-time)
+
+    #sidebar
+      span(1/2)
+      left: -50%
+
+    #page-container
+      span(1)
+      right: 0
+
+    .sidebar-open &
+      #sidebar
+        left: 0
+
+      #page-container
+        right: -50%
+
+  +above(tablet)
+    #sidebar
+      span(1/5)
+
+    #page-container
+      span(4/5)
+
+  +above(small-desktop)
+    #sidebar
+      span(1/7)
+
+    #page-container
+      span(6/7)
