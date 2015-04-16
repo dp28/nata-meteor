@@ -1,8 +1,4 @@
-Meteor.subscribe 'tasks'
-
-Accounts.ui.config passwordSignupFields: 'USERNAME_ONLY'
-
-addTouchwipe = ->
+Meteor.startup ->
   $(document.body).touchwipe
     wipeLeft: ->
       $('body').removeClass 'sidebar-open'
@@ -12,6 +8,3 @@ addTouchwipe = ->
         $('body').addClass 'sidebar-open'
 
     preventDefaultEvents: false
-
-Meteor.startup ->
-  addTouchwipe()

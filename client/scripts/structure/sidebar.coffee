@@ -1,14 +1,11 @@
-Template.layout.events
-  'click #sidebar-toggle': ({target}) ->
-    $('body').toggleClass 'sidebar-open'
-
+Template.sidebar.events
   'click .hide-completed': ->
     Session.set 'hideCompleted', not Session.get 'hideCompleted'
 
   'click #login-buttons-logout': ->
     Router.go 'public'
 
-Template.layout.helpers
+Template.sidebar.helpers
 
   hideCompleted: ->
     Session.get 'hideCompleted'
