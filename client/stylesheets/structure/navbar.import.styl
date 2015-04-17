@@ -35,6 +35,29 @@
     +above(mobile)
       display: none
 
+  .login-nav
+    position: relative
+    float: right
+    padding: 9px 10px
+    margin-top: 8px
+    margin-right: 15px
+    margin-bottom: 8px
+
+    #login-dropdown-list
+      left: auto
+      right: 0
+
+    #login-buttons
+      .login-close-text
+        float: right
+
+      .login-link-text
+        text-decoration: none
+        color: colours.text
+
+        &:hover
+          color: colours.grey.light
+
 #navbar-shadow
   width: 100%
   height: sizes.navbar-height
@@ -54,4 +77,5 @@
   line-height: 1
 
   &:hover
+  &:focus
     text-decoration: none
