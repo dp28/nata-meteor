@@ -1,12 +1,14 @@
 #sidebar
   +loginButtons
-  .heading Lists
 
-  ul.nav.sidebar-nav
-    li: a(href="{{pathFor 'profile'}}") My lists
-    li: a(href="{{pathFor 'public'}}") Public lists
+  section
+    .heading Lists
 
-  .settings
+    ul.nav.sidebar-nav
+      li: a(href="{{pathFor 'profile'}}") My lists
+      li: a(href="{{pathFor 'public'}}") Public lists
+
+  section.settings
     .heading Settings
 
     if hideCompleted
