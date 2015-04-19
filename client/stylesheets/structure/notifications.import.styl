@@ -1,9 +1,12 @@
 #notifications
-  position: absolute
-  top: -50px
+  position: fixed
+  top: 0
   z-index: 1100
 
-@media screen and (max-width: 767px)
+  .alert
+    padding: 14px
+
++below(mobile)
   #notifications
     top: auto
     bottom: 0

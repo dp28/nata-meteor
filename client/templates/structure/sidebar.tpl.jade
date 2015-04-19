@@ -3,7 +3,8 @@
     .heading Lists
 
     ul.nav.sidebar-nav
-      li: a(href="{{pathFor 'profile'}}") My lists
+      if currentUser
+        li: a(href="{{pathFor 'profile'}}") My lists
       li: a(href="{{pathFor 'public'}}") Public lists
 
   section.settings
